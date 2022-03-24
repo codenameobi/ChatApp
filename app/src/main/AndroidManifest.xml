@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatApplication">
         <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".Signup"
             android:exported="false" />
         <activity
@@ -23,9 +26,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>
