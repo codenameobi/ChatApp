@@ -7,9 +7,11 @@
         <entry key="app/src/main/res/drawable/edt_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/message_box_background.xml" value="0.138" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.1838768115942029" />
+        <entry key="app/src/main/res/layout/activity_group.xml" value="0.18568840579710144" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.13958333333333334" />
+        <entry key="app/src/main/res/layout/groups_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/receive_layout.xml" value="0.1838768115942029" />
         <entry key="app/src/main/res/layout/send_layout.xml" value="0.1838768115942029" />
         <entry key="app/src/main/res/layout/user_layout.xml" value="0.1838768115942029" />

@@ -1,10 +1,15 @@
 package com.example.chatapplication
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -66,6 +71,45 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             return true
         }
+        if(item.itemId == R.id.create_group){
+            RequestNewGroup();
+        }
+        if(item.itemId == R.id.view_group){
+            val intent = Intent (this@MainActivity, GroupActivity::class.java)
+            finish()
+            startActivity(intent)
+            return true
+        }
         return true
+    }
+
+    private fun RequestNewGroup() {
+        val builder = AlertDialog.Builder(this@MainActivity)
+        builder.setTitle("Enter Group Name")
+
+        val groupNameField = EditText(this)
+        groupNameField.setHint("e.g Coding Cafe")
+        builder.setView(groupNameField)
+
+        builder.setPositiveButton("Create Group"){ dialogInterface, _ ->
+            val groupName = groupNameField.getText().toString()
+            if(TextUtils.isEmpty(groupName)){
+                Toast.makeText(this,"Please Enter Group Name",Toast.LENGTH_LONG).show()
+            }
+            CreateNewGroup(groupName)
+        }
+        builder.setNegativeButton("No"){ dialogInterface, _ ->
+            dialogInterface.cancel()
+        }
+        builder.show()
+    }
+
+    private fun CreateNewGroup(groupName: String) {
+        val groupData = Group(
+            groupName = groupName
+        )
+        mDbRef.child("Groups").child(groupName).setValue(groupData).addOnSuccessListener {
+            Toast.makeText(this,groupName + "is Created Successfully",Toast.LENGTH_LONG).show()
+        }
     }
 }
