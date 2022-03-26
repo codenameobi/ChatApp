@@ -1,6 +1,7 @@
 package com.example.chatapplication
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,12 @@ class GroupAdapter (val context: Context, val groupList: ArrayList<Group>) :
     override fun onBindViewHolder(holder: GroupViewHolder, position: Int) {
         val currentGroup = groupList[position]
         holder.textName.text = currentGroup.groupName
+
+        holder.itemView.setOnClickListener{
+            val intent = Intent(context, GroupChatActivity::class.java)
+            intent.putExtra("groupName", currentGroup.groupName)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
